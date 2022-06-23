@@ -2,23 +2,68 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [totalInvestido, setTotalInvestido] = useState(0);
+  const [cart, setCart] = useState(false);
   return (
     <>
       <div className=" w-screen">
-        <div className="flex items-center justify-evenly mt-10 mb-10">
-          <div className="text-2xl font-semibold">DeclarInvest</div>
-          {/* TODO:Icone carteira*/}
-          <button className="rounded-full px-7 py-7 bg-red-500" />
-        </div>
-        <div className="bg-blue-200 py-2">
-          <div className="text-lg  w-screen flex  ">
-            <div className="w-1/4" />
-            <div className="font-medium text-gray-600">Total Investido</div>
+        {cart ? (
+          <div>
+            <div className="flex items-center justify-evenly mt-5 mb-10">
+              <div className="text-2xl font-semibold">DeclarInvest</div>
+              {/* TODO:Icone carteira*/}
+              <button
+                className="rounded-full px-7 py-7 bg-red-500"
+                onClick={() => setCart(!cart)}
+              />
+            </div>
+            <div className="bg-blue-200 py-2">
+              <div className="text-lg  w-screen flex  ">
+                <div className="w-1/4" />
+                <div className="font-medium text-gray-600">Total Investido</div>
+              </div>
+              <div className="text-2xl flex justify-center text-blue-600 font-bold">
+                R$: {totalInvestido}
+              </div>
+            </div>
           </div>
-          <div className="text-2xl flex justify-center text-blue-600 font-bold">
-            R$: {totalInvestido}
+        ) : (
+          <div>
+            <div className="w-full flex justify-center mt-5">
+              <button
+                className="rounded-full px-7 py-7 bg-red-500 self-center"
+                onClick={() => setCart(!cart)}
+              />
+            </div>
+            <div className="w-full text-center text-2xl font-semibold text-gray-800">
+              Minha Carteira
+            </div>
+            <div className="mt-2 space-y-1">
+              <div className="border-[1px] border-gray-700 flex  rounded-sm bg-blue-200 mx-5">
+                <div className="w-1/2 text-center font-semibold text-sm">
+                  Ativo
+                </div>
+                <div className="w-1/2 text-center font-semibold text-sm">
+                  Quantidade
+                </div>
+              </div>
+              <div className="border-[1px] border-gray-700 flex  rounded-sm bg-blue-200 mx-5">
+                <div className="w-1/2 text-center font-semibold text-sm">
+                  BBSA3
+                </div>
+                <div className="w-1/2 text-center font-semibold text-sm">
+                  32
+                </div>
+              </div>
+            </div>
+            <div
+              className="w-full flex justify-center text-red-500 font-bold"
+              onClick={() => setCart(!cart)}
+            >
+              voltar
+            </div>
           </div>
-        </div>
+        )}
+
         <div className="mt-7 flex justify-center items-center">
           <div className="px-4 w-1/3 flex justify-end">
             {/* TODO:Icone sino */}
