@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+/* import { BotaoVender } from "./components/BotaoVender";
+ */
 function App() {
   const [totalInvestido, setTotalInvestido] = useState(0);
   const [cart, setCart] = useState(false);
@@ -56,7 +57,7 @@ function App() {
               </div>
             </div>
             <div
-              className="w-full flex justify-center text-red-500 font-bold"
+              className="w-full flex justify-center text-red-500 font-bold hover:cursor-pointer"
               onClick={() => setCart(!cart)}
             >
               voltar
