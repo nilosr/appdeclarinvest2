@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-/* import { BotaoVender } from "./components/BotaoVender";
- */
+import ComponentAtivo from "./components/ComponentAtivo";
+import ModalCompra from "./components/ModalCompra";
+
 function App() {
   const [totalInvestido, setTotalInvestido] = useState(0);
   const [cart, setCart] = useState(false);
   return (
     <>
-      <div className=" w-screen">
+      <div className=" w-screen pb-16">
         {cart ? (
           <div>
             <div className="flex items-center justify-evenly mt-5 mb-10">
@@ -47,14 +48,7 @@ function App() {
                   Quantidade
                 </div>
               </div>
-              <div className="border-[1px] border-gray-700 flex  rounded-sm bg-blue-200 mx-5">
-                <div className="w-1/2 text-center font-semibold text-sm">
-                  BBSA3
-                </div>
-                <div className="w-1/2 text-center font-semibold text-sm">
-                  32
-                </div>
-              </div>
+              <ComponentAtivo />
             </div>
             <div
               className="w-full flex justify-center text-red-500 font-bold hover:cursor-pointer"
@@ -74,12 +68,12 @@ function App() {
           <div className=" w-1/3"></div>
         </div>
         <div className="flex justify-evenly mt-4">
-          {" "}
+          <ModalCompra />
           <button className="bg-green-400 rounded-lg w-28 h-9 text-xl shadow-md items-center text-gray-800 font-semibold">
             Compra
           </button>
           <button className="bg-red-600 rounded-lg w-28 h-9 text-xl shadow-md items-center text-white font-semibold">
-            Compra
+            Venda
           </button>
         </div>
         <div className="mt-7 flex justify-center items-center ">
@@ -96,12 +90,12 @@ function App() {
             <button className="bg-blue-400 rounded-lg w-full h-10 text-xl shadow-md items-center text-white font-semibold">
               Baixar csv
             </button>
-            <button className="bg-blue-800 rounded-lg w-full h-10 text-xl shadow-md items-center text-white font-semibold">
+            {/*           <button className="bg-blue-800 rounded-lg w-full h-10 text-xl shadow-md items-center text-white font-semibold">
               Baixar PDF
-            </button>
+            </button> */}
           </div>
         </div>
-        <div className="bg-gray-800 w-screen text-white text-center font-semibold font-mono bottom-0 py-2 absolute ">
+        <div className="bg-gray-800 w-screen text-white text-center font-semibold font-mono py-2 fixed bottom-0 ">
           Desenvolvido por Nilosr
         </div>
       </div>
