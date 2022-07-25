@@ -2,9 +2,27 @@ import React, { useEffect, useState } from "react";
 import ComponentAtivo from "./components/ComponentAtivo";
 import ModalCompra from "./components/ModalCompra";
 
+interface Data {
+  NomeAtivo?: String;
+  DataCompra?: string;
+  DataVenda?: string;
+  PrecoCompra?: string;
+  PrecoVenda?: string;
+  QuantCompra?: string;
+  QuantVenda?: string;
+}
+
 function App() {
+  const [ativo1, setAtivo1] = useState<Data>();
+  const [ativo2, setAtivo2] = useState<Data>();
+  const [ativo3, setAtivo3] = useState<Data>();
+  const [ativo4, setAtivo4] = useState<Data>();
+  const [ativo5, setAtivo5] = useState<Data>();
   const [totalInvestido, setTotalInvestido] = useState(0);
   const [cart, setCart] = useState(false);
+
+  useEffect(() => setAtivo1({ NomeAtivo: "asddasd" }), []);
+
   return (
     <>
       <div className=" w-screen pb-16">
@@ -48,7 +66,13 @@ function App() {
                   Quantidade
                 </div>
               </div>
-              <ComponentAtivo />
+              {/* <ComponentAtivo />*/}
+              <div className="border-[1px] border-gray-700 flex  rounded-sm bg-blue-200 mx-5">
+                <div className="w-1/2 text-center font-semibold text-sm">
+                  {ativo1?.NomeAtivo}
+                </div>
+                <div className="w-1/2 text-center font-semibold text-sm"></div>
+              </div>
             </div>
             <div
               className="w-full flex justify-center text-red-500 font-bold hover:cursor-pointer"
@@ -68,7 +92,8 @@ function App() {
           <div className=" w-1/3"></div>
         </div>
         <div className="flex justify-evenly mt-4">
-          <ModalCompra />
+          {/*           <ModalCompra />
+           */}{" "}
           <button className="bg-green-400 rounded-lg w-28 h-9 text-xl shadow-md items-center text-gray-800 font-semibold">
             Compra
           </button>
