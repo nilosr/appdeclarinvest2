@@ -4,10 +4,10 @@ interface Data {
   NomeAtivo?: String;
   DataCompra?: string;
   DataVenda?: string;
-  PrecoCompra?: number;
-  PrecoVenda?: number;
-  QuantCompra?: number;
-  QuantVenda?: number;
+  PrecoCompra?: string;
+  PrecoVenda?: string;
+  QuantCompra?: string;
+  QuantVenda?: string;
 }
 
 function App() {
@@ -23,21 +23,35 @@ function App() {
   const [hasAtivo5, setHasAtivo5] = useState(false);
   const [modalCompra, setModalCompra] = useState(false);
   const [successCompra, setSuccessCompra] = useState(false);
-  const [aux, setAux] = useState<Data>();
+  const [temp1, setTemp1] = useState("");
+  const [temp2, setTemp2] = useState("");
+  const [temp3, setTemp3] = useState("");
+  const [temp4, setTemp4] = useState("");
+  const [temp5, setTemp5] = useState("");
+  const [temp6, setTemp6] = useState("");
+  const [temp7, setTemp7] = useState("");
 
   const [totalInvestido, setTotalInvestido] = useState(0);
   const [cart, setCart] = useState(false);
 
-  function SaveData(data: Data) {
+  function SaveData(
+    tNomeAtivo: string,
+    tDataCompra: string,
+    tPrecoCompra: string,
+    tQuantCompra: string
+    /*   tDataVenda: string,
+    tPrecoVenda: number,
+    tQuantVenda: number */
+  ) {
     if (!hasAtivo1) {
       setAtivo1({
-        NomeAtivo: data.NomeAtivo,
-        DataCompra: data.DataCompra,
-        DataVenda: data.DataVenda,
-        PrecoCompra: data.PrecoCompra,
-        PrecoVenda: data.PrecoVenda,
-        QuantCompra: data.QuantCompra,
-        QuantVenda: data.QuantVenda,
+        NomeAtivo: tNomeAtivo,
+        DataCompra: tDataCompra,
+        PrecoCompra: tPrecoCompra,
+        QuantCompra: tQuantCompra,
+        /* DataVenda: tDataVenda,
+        PrecoVenda: tPrecoVenda,
+        QuantVenda: tQuantVenda, */
       });
       setHasAtivo1(true);
       resetAux();
@@ -45,13 +59,13 @@ function App() {
     }
     if (!hasAtivo2) {
       setAtivo2({
-        NomeAtivo: data.NomeAtivo,
-        DataCompra: data.DataCompra,
-        DataVenda: data.DataVenda,
-        PrecoCompra: data.PrecoCompra,
-        PrecoVenda: data.PrecoVenda,
-        QuantCompra: data.QuantCompra,
-        QuantVenda: data.QuantVenda,
+        NomeAtivo: tNomeAtivo,
+        DataCompra: tDataCompra,
+        PrecoCompra: tPrecoCompra,
+        QuantCompra: tQuantCompra,
+        /* DataVenda: tDataVenda,
+        PrecoVenda: tPrecoVenda,
+        QuantVenda: tQuantVenda,*/
       });
       setHasAtivo2(true);
       resetAux();
@@ -59,13 +73,13 @@ function App() {
     }
     if (!hasAtivo3) {
       setAtivo3({
-        NomeAtivo: data.NomeAtivo,
-        DataCompra: data.DataCompra,
-        DataVenda: data.DataVenda,
-        PrecoCompra: data.PrecoCompra,
-        PrecoVenda: data.PrecoVenda,
-        QuantCompra: data.QuantCompra,
-        QuantVenda: data.QuantVenda,
+        NomeAtivo: tNomeAtivo,
+        DataCompra: tDataCompra,
+        PrecoCompra: tPrecoCompra,
+        QuantCompra: tQuantCompra,
+        /* DataVenda: tDataVenda ,
+        PrecoVenda: tPrecoVenda,
+        QuantVenda: tQuantVenda,*/
       });
       setHasAtivo3(true);
       resetAux();
@@ -73,13 +87,13 @@ function App() {
     }
     if (!hasAtivo4) {
       setAtivo4({
-        NomeAtivo: data.NomeAtivo,
-        DataCompra: data.DataCompra,
-        DataVenda: data.DataVenda,
-        PrecoCompra: data.PrecoCompra,
-        PrecoVenda: data.PrecoVenda,
-        QuantCompra: data.QuantCompra,
-        QuantVenda: data.QuantVenda,
+        NomeAtivo: tNomeAtivo,
+        DataCompra: tDataCompra,
+        PrecoCompra: tPrecoCompra,
+        QuantCompra: tQuantCompra,
+        /* DataVenda: tDataVenda ,
+        PrecoVenda: tPrecoVenda,
+        QuantVenda: tQuantVenda,*/
       });
       setHasAtivo4(true);
       resetAux();
@@ -87,13 +101,13 @@ function App() {
     }
     if (!hasAtivo5) {
       setAtivo5({
-        NomeAtivo: data.NomeAtivo,
-        DataCompra: data.DataCompra,
-        DataVenda: data.DataVenda,
-        PrecoCompra: data.PrecoCompra,
-        PrecoVenda: data.PrecoVenda,
-        QuantCompra: data.QuantCompra,
-        QuantVenda: data.QuantVenda,
+        NomeAtivo: tNomeAtivo,
+        DataCompra: tDataCompra,
+        PrecoCompra: tPrecoCompra,
+        QuantCompra: tQuantCompra,
+        /* PrecoVenda: tPrecoVenda,
+        DataVenda: tDataVenda,
+        QuantVenda: tQuantVenda, */
       });
       setHasAtivo5(true);
       resetAux();
@@ -103,36 +117,17 @@ function App() {
     }
   }
   function resetAux() {
-    setAux({
-      NomeAtivo: "",
-      DataCompra: "",
-      DataVenda: "",
-      PrecoCompra: 0,
-      PrecoVenda: 0,
-      QuantCompra: 0,
-      QuantVenda: 0,
-    });
+    setTemp1("");
+    setTemp2("");
+    setTemp3("");
+    setTemp4("");
+    setTemp5("");
+    setTemp6("");
+    setTemp7("");
   }
-
-  function fillAux() {
-    setAux({
-      NomeAtivo: "aaa",
-      DataCompra: "aa1",
-      DataVenda: "a11",
-      PrecoCompra: 1,
-      PrecoVenda: 11,
-      QuantCompra: 111,
-      QuantVenda: 1111,
-    });
-  }
-
-  /*   useEffect(() => {
-    setAtivo1({ NomeAtivo: "asddasd" });
-    setHasAtivo1(false);
-  }, []); */
   useEffect(() => {
-    console.log(aux);
-  }, [aux]);
+    console.log(temp1);
+  }, [temp1]);
 
   return (
     <>
@@ -182,7 +177,9 @@ function App() {
                   <div className="w-1/2 text-center font-semibold text-sm">
                     {ativo1?.NomeAtivo}
                   </div>
-                  <div className="w-1/2 text-center font-semibold text-sm"></div>
+                  <div className="w-1/2 text-center font-semibold text-sm">
+                    {ativo1?.QuantCompra}
+                  </div>
                 </div>
               ) : (
                 <div />
@@ -192,7 +189,9 @@ function App() {
                   <div className="w-1/2 text-center font-semibold text-sm">
                     {ativo2?.NomeAtivo}
                   </div>
-                  <div className="w-1/2 text-center font-semibold text-sm"></div>
+                  <div className="w-1/2 text-center font-semibold text-sm">
+                    {ativo2?.QuantCompra}
+                  </div>
                 </div>
               ) : (
                 <div />
@@ -202,7 +201,9 @@ function App() {
                   <div className="w-1/2 text-center font-semibold text-sm">
                     {ativo3?.NomeAtivo}
                   </div>
-                  <div className="w-1/2 text-center font-semibold text-sm"></div>
+                  <div className="w-1/2 text-center font-semibold text-sm">
+                    {ativo3?.QuantCompra}
+                  </div>
                 </div>
               ) : (
                 <div />
@@ -212,7 +213,9 @@ function App() {
                   <div className="w-1/2 text-center font-semibold text-sm">
                     {ativo4?.NomeAtivo}
                   </div>
-                  <div className="w-1/2 text-center font-semibold text-sm"></div>
+                  <div className="w-1/2 text-center font-semibold text-sm">
+                    {ativo4?.QuantCompra}
+                  </div>
                 </div>
               ) : (
                 <div />
@@ -222,7 +225,9 @@ function App() {
                   <div className="w-1/2 text-center font-semibold text-sm">
                     {ativo5?.NomeAtivo}
                   </div>
-                  <div className="w-1/2 text-center font-semibold text-sm"></div>
+                  <div className="w-1/2 text-center font-semibold text-sm">
+                    {ativo5?.QuantCompra}
+                  </div>
                 </div>
               ) : (
                 <div />
@@ -294,6 +299,8 @@ function App() {
               <div className="bg-transparent w-full font-semibold mt-1 ">
                 <label>Ativo: </label>
                 <input
+                  value={temp1}
+                  onChange={(e) => setTemp1(e.target.value)}
                   className="bg-transparent text-base font-sans text-center"
                   type="text"
                 />
@@ -301,6 +308,8 @@ function App() {
               <div className="bg-transparent w-full font-semibold mt-1 ">
                 <label>Quantidade: </label>
                 <input
+                  value={temp2}
+                  onChange={(e) => setTemp2(e.target.value)}
                   className="bg-transparent text-base font-sans text-center"
                   type="text"
                 />
@@ -308,6 +317,8 @@ function App() {
               <div className="bg-transparent w-full font-semibold mt-1 ">
                 <label>Preço por cota: </label>
                 <input
+                  value={temp3}
+                  onChange={(e) => setTemp3(e.target.value)}
                   className="bg-transparent text-base font-sans text-center"
                   type="text"
                 />
@@ -315,6 +326,8 @@ function App() {
               <div className="bg-transparent w-full font-semibold mt-1 ">
                 <label>Data de compra: </label>
                 <input
+                  value={temp4}
+                  onChange={(e) => setTemp4(e.target.value)}
                   className="bg-transparent text-base font-sans text-center"
                   type="text"
                 />
@@ -326,8 +339,7 @@ function App() {
                 onClick={() => {
                   setSuccessCompra(true);
                   setModalCompra(!modalCompra);
-                  fillAux();
-                  /* SaveData(aux); */
+                  SaveData(temp1, temp2, temp3, temp4);
                 }}
               >
                 Registrar
