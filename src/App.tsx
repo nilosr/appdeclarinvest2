@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+/* import LogoSVG from "../public/LogoSVG";
+ */
 interface Data {
   NomeAtivo?: String;
   DataCompra?: string;
@@ -36,9 +37,9 @@ function App() {
 
   function SaveData(
     tNomeAtivo: string,
-    tDataCompra: string,
+    tQuantCompra: string,
     tPrecoCompra: string,
-    tQuantCompra: string
+    tDataCompra: string
     /*   tDataVenda: string,
     tPrecoVenda: number,
     tQuantVenda: number */
@@ -54,6 +55,7 @@ function App() {
         QuantVenda: tQuantVenda, */
       });
       setHasAtivo1(true);
+      UpdateTotal(tPrecoCompra, tQuantCompra);
       resetAux();
       return;
     }
@@ -68,6 +70,7 @@ function App() {
         QuantVenda: tQuantVenda,*/
       });
       setHasAtivo2(true);
+      UpdateTotal(tPrecoCompra, tQuantCompra);
       resetAux();
       return;
     }
@@ -82,6 +85,7 @@ function App() {
         QuantVenda: tQuantVenda,*/
       });
       setHasAtivo3(true);
+      UpdateTotal(tPrecoCompra, tQuantCompra);
       resetAux();
       return;
     }
@@ -96,6 +100,7 @@ function App() {
         QuantVenda: tQuantVenda,*/
       });
       setHasAtivo4(true);
+      UpdateTotal(tPrecoCompra, tQuantCompra);
       resetAux();
       return;
     }
@@ -110,6 +115,7 @@ function App() {
         QuantVenda: tQuantVenda, */
       });
       setHasAtivo5(true);
+      UpdateTotal(tPrecoCompra, tQuantCompra);
       resetAux();
       return;
     } else {
@@ -129,6 +135,11 @@ function App() {
     console.log(temp1);
   }, [temp1]);
 
+  function UpdateTotal(preço: string, quant: string) {
+    setTotalInvestido(totalInvestido + parseInt(preço) * parseInt(quant));
+    console.log("preço:" + preço + "quant:" + quant);
+  }
+
   return (
     <>
       <div className=" w-screen pb-16">
@@ -137,7 +148,8 @@ function App() {
             <div className="flex items-center justify-evenly mt-5 mb-10">
               <div className="text-2xl font-semibold">DeclarInvest</div>
               {/* TODO:Icone carteira*/}
-              <button
+{/*               <img src={LogoSVG} />
+ */}              <button
                 className="rounded-full px-7 py-7 bg-red-500"
                 onClick={() => setCart(!cart)}
               />
